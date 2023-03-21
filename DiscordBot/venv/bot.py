@@ -1,5 +1,7 @@
 import discord
 import responses
+import piechart
+import count
 
 async def send_message(message, user_message, is_private):
     try:
@@ -9,6 +11,8 @@ async def send_message(message, user_message, is_private):
         print(e)
 
 def run_discord_bot():
+    piechart.makechart()
+    count.retrieve_messages('1087638615783391312')
     TOKEN= 'ODQ2MTY2NTgyNzc4NjU4ODI2.GZ7KFQ.nWnGIRHlw8SCGVS0KJoZC7dTKw5RECa-L7MhRM'
     intents=discord.Intents.default()
     intents.message_content=True
@@ -32,6 +36,10 @@ def run_discord_bot():
         if(user_message[0]=='?'):
             user_message=user_message[1:]
             await send_message(message, user_message, is_private=True)
+        elif (user_message== '!chart'):
+            with open('C:/Users/Emily Rose/source/repos/DiscordBot/countingPie.png', 'rb') as f:
+                picture = discord.File(f)
+                await message.channel.send(file=picture)
         else:
             await send_message(message, user_message, is_private=False)
 
