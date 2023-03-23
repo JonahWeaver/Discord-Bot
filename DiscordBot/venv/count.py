@@ -23,6 +23,4 @@ def addCount(message):
             else:
                 userList.append(message.author.name)
                 numList.append(1)
-#id = 1087638615783391312
-#845993325835452418
 

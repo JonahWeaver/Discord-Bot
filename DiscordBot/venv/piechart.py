@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-def makechart(numList, userList):
+def makechart(numList, userList, filePath):
 
     ny = numList.copy()
     su = userList.copy()
@@ -30,7 +30,7 @@ def makechart(numList, userList):
 
 
 
-    strFile = 'C:/Users/Emily Rose/source/repos/DiscordBot/countingPie.png'
+    strFile = filePath + 'countingPie.png'
 
     if os.path.isfile(strFile):
         os.system("del "+strFile)   # Opt.: os.system("rm "+strFile)
