@@ -3,7 +3,8 @@ import responses
 import piechart
 import count
 
-filePath = 'C:/Users/Emily Rose/source/repos/DiscordBot/'
+filePath = 'C:/Users/Emily Rose/source/repos/DiscordBotData/'
+piePath = 'C:/Users/Emily Rose/source/repos/DiscordBot/'
 
 async def send_message(message, user_message, is_private):
     try:
@@ -33,7 +34,7 @@ def run_discord_bot():
     async def on_ready():
         his = await get_result(channelID)
         count.retrieve_messages(his)
-        piechart.makechart(count.numList, count.userList, filePath)
+        piechart.makechart(count.numList, count.userList, piePath)
         print(f'{client.user} is now running!')
 
     @client.event
@@ -42,7 +43,7 @@ def run_discord_bot():
             return
         if message.channel.id == channelID:
             count.addCount(message)
-            piechart.makechart(count.numList, count.userList, filePath)
+            piechart.makechart(count.numList, count.userList, piePath)
         username= str(message.author)
         user_message= str(message.content)
         channel= str(message.channel)
@@ -55,7 +56,7 @@ def run_discord_bot():
             user_message=user_message[1:]
             await send_message(message, user_message, is_private=True)
         elif (user_message== '!chart'):
-            with open(filePath + 'countingPie.png', 'rb') as f:
+            with open(piePath + 'countingPie.png', 'rb') as f:
                 picture = discord.File(f)
                 await message.channel.send(file=picture)
         else:
