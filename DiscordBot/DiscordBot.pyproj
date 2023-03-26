@@ -24,6 +24,9 @@
     <Compile Include="venv\count.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="venv\musicutilities.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="venv\piechart.py">
       <SubType>Code</SubType>
     </Compile>
